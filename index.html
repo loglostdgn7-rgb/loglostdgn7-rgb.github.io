@@ -1,0 +1,240 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>홍길동 · 포트폴리오</title>
+  <meta name="description" content="홍길동 · 풀스택 개발자 포트폴리오" />
+  <link rel="stylesheet" href="./index.css" />
+
+  <!-- Swiper CSS (포트폴리오 슬라이더) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <a href="#hero" class="brand" aria-label="홈으로 이동">Hong Gil-dong</a>
+    <nav class="site-nav" aria-label="주 메뉴">
+      <a href="#about">소개</a>
+      <a href="#skills">스킬</a>
+      <a href="#portfolio">포트폴리오</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <!-- Hero -->
+  <section id="hero" class="section-hero" aria-label="히어로 섹션">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="hero-overlay">
+      <h1 class="hero-title">
+            <span class="word-ticker-wrapper" aria-live="polite" aria-atomic="true">
+              <span class="word-ticker" id="wordTicker">
+                <!-- JS로 단어가 주입/전환됩니다 -->
+              </span>
+            </span>
+        <span>개발자 홍길동입니다</span>
+      </h1>
+      <p class="hero-subtitle">
+        사용자 가치에 집중하는 풀스택 개발자 · 프론트엔드/백엔드/클라우드
+      </p>
+      <div class="hero-ctas">
+        <a class="btn primary" href="#portfolio">작업물 보기</a>
+        <a class="btn secondary" href="#about">소개 보기</a>
+      </div>
+    </div>
+
+    <button class="scroll-indicator" aria-label="아래로 스크롤">
+      <span class="mouse"></span>
+    </button>
+  </section>
+
+  <!-- 소개 -->
+  <section id="about" class="section section-about" aria-label="소개 섹션">
+    <div class="container about-grid">
+      <div class="about-photo">
+        <img
+                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=900&auto=format&fit=crop"
+                alt="홍길동 프로필 사진(예시)"
+                loading="lazy"
+        />
+      </div>
+      <div class="about-text">
+        <h2>안녕하세요!</h2>
+        <p>
+          제품 가치를 중심으로 설계하고 구현하는 풀스택 개발자 홍길동입니다.
+          프론트엔드에서는 성능과 접근성, 백엔드에서는 안정성과 가시성을 중시합니다.
+          Typescript, React, Node.js, 클라우드 네이티브 환경에 익숙하며
+          테스트와 자동화를 통해 생산성을 높이는 데 집중합니다.
+        </p>
+        <p>
+          문제를 구조적으로 분해하고, 작은 성공을 빠르게 반복하는 방식을 좋아합니다.
+          팀과 함께 배우고 성장하는 경험을 소중히 합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 스킬 -->
+  <section id="skills" class="section section-skills" aria-label="스킬 섹션">
+    <div class="container">
+      <h2>Skill</h2>
+      <p class="section-desc">아이콘은 무작위 예쁜 배치로 렌더링되며 반응형으로 재배치됩니다.</p>
+
+      <!-- 무작위 배치 영역 -->
+      <div class="skill-cloud" id="skillCloud" aria-hidden="false" aria-label="스킬 아이콘 구름">
+        <!-- JS가 아이콘을 동적으로 배치합니다 -->
+      </div>
+
+      <!-- 아이콘이 보이지 않을 때 접근성 대체 목록 -->
+      <ul class="sr-only" aria-hidden="true" id="skillListFallback"></ul>
+    </div>
+  </section>
+
+  <!-- 포트폴리오 -->
+  <section id="portfolio" class="section section-portfolio" aria-label="포트폴리오 섹션">
+    <div class="container">
+      <h2>Portfolio</h2>
+      <p class="section-desc">각 프로젝트 카드는 스와이프 가능한 이미지 슬라이더로 구성되어 있습니다.</p>
+
+      <div class="portfolio-grid">
+        <!-- 프로젝트 1 -->
+        <article class="project-card">
+          <header class="project-header">
+            <h3>프로젝트 A · 전자상거래 SPA</h3>
+            <p>React + TypeScript + Zustand · SSR/CSR 혼합 · Lighthouse 95+</p>
+          </header>
+
+          <div class="swiper project-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/ecom1/1200/720" alt="프로젝트 A 화면 1" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/ecom2/1200/720" alt="프로젝트 A 화면 2" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/ecom3/1200/720" alt="프로젝트 A 화면 3" loading="lazy" />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-nav">
+              <button class="swiper-button-prev" aria-label="이전 이미지"></button>
+              <button class="swiper-button-next" aria-label="다음 이미지"></button>
+            </div>
+          </div>
+
+          <footer class="project-footer">
+            <a class="btn tertiary" href="https://example.com/project-a" target="_blank" rel="noopener noreferrer">라이브 데모</a>
+            <a class="btn tertiary" href="https://github.com/your_handle/project-a" target="_blank" rel="noopener noreferrer">소스 코드</a>
+          </footer>
+        </article>
+
+        <!-- 프로젝트 2 -->
+        <article class="project-card">
+          <header class="project-header">
+            <h3>프로젝트 B · 실시간 대시보드</h3>
+            <p>Next.js + WebSocket + Redis · 다크모드 · 반응형</p>
+          </header>
+
+          <div class="swiper project-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/dash1/1200/720" alt="프로젝트 B 화면 1" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/dash2/1200/720" alt="프로젝트 B 화면 2" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/dash3/1200/720" alt="프로젝트 B 화면 3" loading="lazy" />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-nav">
+              <button class="swiper-button-prev" aria-label="이전 이미지"></button>
+              <button class="swiper-button-next" aria-label="다음 이미지"></button>
+            </div>
+          </div>
+
+          <footer class="project-footer">
+            <a class="btn tertiary" href="https://example.com/project-b" target="_blank" rel="noopener noreferrer">라이브 데모</a>
+            <a class="btn tertiary" href="https://github.com/your_handle/project-b" target="_blank" rel="noopener noreferrer">소스 코드</a>
+          </footer>
+        </article>
+
+        <!-- 프로젝트 3 -->
+        <article class="project-card">
+          <header class="project-header">
+            <h3>프로젝트 C · 블로그/콘텐츠 플랫폼</h3>
+            <p>NestJS + PostgreSQL + Prisma · 이미지 최적화 · SEO</p>
+          </header>
+
+          <div class="swiper project-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/blog1/1200/720" alt="프로젝트 C 화면 1" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/blog2/1200/720" alt="프로젝트 C 화면 2" loading="lazy" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://picsum.photos/seed/blog3/1200/720" alt="프로젝트 C 화면 3" loading="lazy" />
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-nav">
+              <button class="swiper-button-prev" aria-label="이전 이미지"></button>
+              <button class="swiper-button-next" aria-label="다음 이미지"></button>
+            </div>
+          </div>
+
+          <footer class="project-footer">
+            <a class="btn tertiary" href="https://example.com/project-c" target="_blank" rel="noopener noreferrer">라이브 데모</a>
+            <a class="btn tertiary" href="https://github.com/your_handle/project-c" target="_blank" rel="noopener noreferrer">소스 코드</a>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> 홍길동. All rights reserved.</p>
+    <div class="socials" aria-label="소셜 링크">
+      <!-- GitHub -->
+      <a href="https://github.com/your_handle" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.84 1.32 3.53 1.01.11-.78.43-1.32.78-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.44.37.83 1.1.83 2.22v3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/>
+        </svg>
+      </a>
+      <!-- Instagram -->
+      <a href="https://instagram.com/your_handle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.8-3.3a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2Z"/>
+        </svg>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/your_handle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5Zm.02 6H2v11h3V9.5Zm5 0H7v11h3v-5.5c0-1.43.53-2.5 1.86-2.5 1.01 0 1.54.69 1.54 2.5V20.5h3v-6.36c0-3.36-1.77-4.64-4.13-4.64-1.9 0-2.74 1.05-3.27 1.79h-.04V9.5Z"/>
+        </svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:your_name@example.com" aria-label="이메일 보내기">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M2 6a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6Zm3-.5a.5.5 0 0 0-.5.5v.38l7.5 4.69 7.5-4.7V6a.5.5 0 0 0-.5-.5H5Zm14.5 4.04-6.97 4.36a1.5 1.5 0 0 1-1.56 0L4 9.54V18a.5.5 0 0 0 .5.5h15a.5.5 0 0 0 .5-.5v-8.46Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- App JS -->
+<script src="./index.js" defer></script>
+</body>
+</html>
