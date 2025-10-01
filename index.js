@@ -7,6 +7,23 @@ const clamp = (n, min, max) => Math.max(min, Math.min(n));
 const rand = (min, max) => Math.random() * (max - min) + min;
 const debounce = (fn, d = 100) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), d); }; };
 
+const skills = [
+  { name: 'HTML5', slug: 'html5', size: 80 },
+  { name: 'CSS3', size: 80, renderAsText: true },
+  { name: 'JavaScript', slug: 'javascript', size: 75 },
+  { name: 'Java', size: 90, renderAsText: true },
+  { name: 'Spring Boot', slug: 'springboot', size: 90 },
+  { name: 'Spring Security', slug: 'springsecurity', size: 80 },
+  { name: 'Thymeleaf', slug: 'thymeleaf', size: 75 },
+  { name: 'MySQL', slug: 'mysql', size: 80 },
+  { name: 'MyBatis', size: 75, renderAsText: true },
+  { name: 'Git', slug: 'git', size: 80 },
+  { name: 'GitHub', slug: 'github', size: 60, invert: true },
+  { name: 'Docker', slug: 'docker', size: 85 },
+  { name: 'Maven', slug: 'apachemaven', size: 75 },
+  { name: 'Lombok', size: 70, renderAsText: true },
+];
+
 // 문서 로드 시 초기화
 window.addEventListener('DOMContentLoaded', () => {
   setYear();
@@ -14,6 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
   setupHeroCanvas();
   setupSkillCloud();
   setupPortfolioSlider();
+  setupSkillListToggle();
 });
 
 function setYear() {
@@ -84,32 +102,36 @@ function setupPortfolioSlider() {
   });
 }
 
+function setupSkillListToggle() {
+    const btn = qs('#toggle-skills-btn');
+    const list = qs('#skill-list');
+    if (!btn || !list) return;
+
+    list.innerHTML = skills
+        .map(skill => `<span class="skill-tag">#${skill.name}</span>`)
+        .join('');
+
+    btn.addEventListener('click', () => {
+        const isHidden = list.hasAttribute('hidden');
+        if (isHidden) {
+            list.removeAttribute('hidden');
+            btn.textContent = '스킬 목록 닫기';
+            btn.setAttribute('aria-expanded', 'true');
+        } else {
+            list.setAttribute('hidden', '');
+            btn.textContent = '전체 스킬 보기';
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 function setupSkillCloud() {
   const container = qs('#skill-cloud');
   if (!container) return;
 
-  const skills = [
-    { name: 'HTML5', slug: 'html5', size: 80 },
-    { name: 'CSS3', size: 80, renderAsText: true },
-    { name: 'JavaScript', slug: 'javascript', size: 85 },
-    { name: 'Java', size: 90, renderAsText: true },
-    { name: 'Spring Boot', slug: 'springboot', size: 90 },
-    { name: 'Spring Security', slug: 'springsecurity', size: 80 },
-    { name: 'Thymeleaf', slug: 'thymeleaf', size: 75 },
-    { name: 'MySQL', slug: 'mysql', size: 80 },
-    { name: 'MyBatis', size: 75, renderAsText: true },
-    { name: 'Git', slug: 'git', size: 80 },
-    { name: 'GitHub', slug: 'github', size: 80, invert: true },
-    { name: 'Docker', slug: 'docker', size: 85 },
-    { name: 'Maven', slug: 'apachemaven', size: 75 },
-    { name: 'Lombok', size: 70, renderAsText: true },
-  ];
-
   let bodies = [];
   let bounds;
   let animId = null;
-  let dragTarget = null;
-  const pointer = { x: 0, y: 0 };
   const DAMPING = 1;
 
   function init() {
@@ -153,8 +175,6 @@ function setupSkillCloud() {
 
   function update() {
     for (const body of bodies) {
-      if (body === dragTarget) continue;
-
       body.vx *= DAMPING;
       body.vy *= DAMPING;
       body.x += body.vx;
@@ -223,45 +243,8 @@ function setupSkillCloud() {
     animId = requestAnimationFrame(update);
   }
 
-  function onPointerDown(e) {
-    if (!e.target.closest('.skill-icon')) return;
-    const targetEl = e.target.closest('.skill-icon');
-    const rect = container.getBoundingClientRect();
-    pointer.x = e.clientX - rect.left;
-    pointer.y = e.clientY - rect.top;
-    
-    dragTarget = bodies.find(body => body.el === targetEl);
-    
-    if (dragTarget) {
-      dragTarget.vx = dragTarget.vy = 0;
-      container.setPointerCapture(e.pointerId);
-      container.addEventListener('pointermove', onPointerMove);
-      container.addEventListener('pointerup', onPointerUp);
-    }
-  }
-
-  function onPointerMove(e) {
-    if (!dragTarget) return;
-    const rect = container.getBoundingClientRect();
-    const newX = e.clientX - rect.left;
-    const newY = e.clientY - rect.top;
-    dragTarget.vx = (newX - pointer.x) * 1.5;
-    dragTarget.vy = (newY - pointer.y) * 1.5;
-    pointer.x = newX;
-    pointer.y = newY;
-    dragTarget.x = clamp(pointer.x, dragTarget.r, bounds.width - dragTarget.r);
-    dragTarget.y = clamp(pointer.y, dragTarget.r, bounds.height - dragTarget.r);
-  }
-
-  function onPointerUp(e) {
-    dragTarget = null;
-    container.releasePointerCapture(e.pointerId);
-    container.removeEventListener('pointermove', onPointerMove);
-    container.removeEventListener('pointerup', onPointerUp);
-  }
-
   init();
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -280,7 +263,6 @@ function setupSkillCloud() {
   observer.observe(container);
 
   window.addEventListener('resize', debounce(init, 200));
-  container.addEventListener('pointerdown', onPointerDown);
 }
 
 
