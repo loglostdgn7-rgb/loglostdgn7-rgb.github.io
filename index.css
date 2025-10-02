@@ -186,7 +186,7 @@ main {
 
 /* About span */
 section .tag {
-  color: var(--muted);
+    color: var(--muted);
     font-style: italic;
 }
 
@@ -349,6 +349,21 @@ section .tag {
     font-size: 0.9rem;
     color: var(--muted);
 }
+
+.slide-caption a {
+    display: inline-block;
+    text-decoration: underline;
+    color: var(--muted);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.25rem 0.25rem 0;
+    margin-top: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--text);
+    }
+}
+
 
 .swiper-pagination-bullet-active {
     background-color: var(--primary) !important;
