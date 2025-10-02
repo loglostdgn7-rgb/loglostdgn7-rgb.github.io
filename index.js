@@ -8,18 +8,18 @@ const rand = (min, max) => Math.random() * (max - min) + min;
 const debounce = (fn, d = 100) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), d); }; };
 
 const skills = [
-  { name: 'HTML5', slug: 'html5', size: 80 },
-  { name: 'CSS3', size: 80, renderAsText: true },
-  { name: 'JavaScript', slug: 'javascript', size: 75 },
-  { name: 'Java', size: 90, renderAsText: true },
-  { name: 'Spring Boot', slug: 'springboot', size: 90 },
-  { name: 'Spring Security', slug: 'springsecurity', size: 80 },
-  { name: 'Thymeleaf', slug: 'thymeleaf', size: 75 },
-  { name: 'MySQL', slug: 'mysql', size: 80 },
+  { name: 'HTML5', slug: 'html5', size: 60 },
+  { name: 'CSS3', size: 70, renderAsText: true },
+  { name: 'JavaScript', slug: 'javascript', size: 65 },
+  { name: 'Java', size: 70, renderAsText: true },
+  { name: 'Spring Boot', slug: 'springboot', size: 70 },
+  { name: 'Spring Security', slug: 'springsecurity', size: 60 },
+  { name: 'Thymeleaf', slug: 'thymeleaf', size: 70 },
+  { name: 'MySQL', slug: 'mysql', size: 70 },
   { name: 'MyBatis', size: 75, renderAsText: true },
-  { name: 'Git', slug: 'git', size: 80 },
+  { name: 'Git', slug: 'git', size: 70 },
   { name: 'GitHub', slug: 'github', size: 60, invert: true },
-  { name: 'Docker', slug: 'docker', size: 85 },
+  { name: 'Docker', slug: 'docker', size: 65 },
   { name: 'Maven', slug: 'apachemaven', size: 75 },
   { name: 'Lombok', size: 70, renderAsText: true },
 ];
