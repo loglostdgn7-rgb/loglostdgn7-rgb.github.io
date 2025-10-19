@@ -13,7 +13,7 @@ const skills = [
   { name: 'JavaScript', slug: 'javascript', size: 50 },
   { name: 'Java', size: 60, renderAsText: true },
   { name: 'Spring Boot', slug: 'springboot', size: 50 },
-  { name: 'Spring Security', slug: 'springsecurity', size: 60 },
+  { name: 'Spring Security', slug: 'springsecurity', size: 40 },
   { name: 'Thymeleaf', slug: 'thymeleaf', size: 50 },
   { name: 'MySQL', slug: 'mysql', size: 60 },
   { name: 'MyBatis', size: 55, renderAsText: true },
