@@ -9,19 +9,20 @@ const debounce = (fn, d = 100) => { let t; return (...a) => { clearTimeout(t); t
 
 const skills = [
   { name: 'HTML5', slug: 'html5', size: 60 },
-  { name: 'CSS3', size: 70, renderAsText: true },
-  { name: 'JavaScript', slug: 'javascript', size: 65 },
-  { name: 'Java', size: 70, renderAsText: true },
-  { name: 'Spring Boot', slug: 'springboot', size: 70 },
+  { name: 'CSS3', size: 60, renderAsText: true },
+  { name: 'JavaScript', slug: 'javascript', size: 50 },
+  { name: 'Java', size: 60, renderAsText: true },
+  { name: 'Spring Boot', slug: 'springboot', size: 50 },
   { name: 'Spring Security', slug: 'springsecurity', size: 60 },
-  { name: 'Thymeleaf', slug: 'thymeleaf', size: 70 },
-  { name: 'MySQL', slug: 'mysql', size: 70 },
-  { name: 'MyBatis', size: 75, renderAsText: true },
-  { name: 'Git', slug: 'git', size: 70 },
-  { name: 'GitHub', slug: 'github', size: 60, invert: true },
-  { name: 'Docker', slug: 'docker', size: 65 },
-  { name: 'Maven', slug: 'apachemaven', size: 75 },
-  { name: 'Lombok', size: 70, renderAsText: true },
+  { name: 'Thymeleaf', slug: 'thymeleaf', size: 50 },
+  { name: 'MySQL', slug: 'mysql', size: 60 },
+  { name: 'MyBatis', size: 55, renderAsText: true },
+  { name: 'Git', slug: 'git', size: 50 },
+  { name: 'GitHub', slug: 'github', size: 40, invert: true },
+  { name: 'Docker', slug: 'docker', size: 55 },
+  { name: 'Maven', slug: 'apachemaven', size: 55 },
+  { name: 'Lombok', size: 60, renderAsText: true },
+  { name: 'Jenkins', size: 40, slug: 'jenkins' },
 ];
 
 // 문서 로드 시 초기화
