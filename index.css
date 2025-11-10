@@ -29,6 +29,12 @@ body {
     background: linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
+p {
+    letter-spacing: -0.01em; /* 폰트에 따라 미세 조정이 필요하지만, 너무 좁아지지 않게 합니다 */
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
 img {
     max-width: 100%;
     height: auto;
