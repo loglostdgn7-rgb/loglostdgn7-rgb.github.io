@@ -343,6 +343,8 @@ section .tag {
 }
 
 .swiper-slide .slide-caption {
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
 }
 
@@ -351,7 +353,6 @@ section .tag {
 }
 
 .swiper-slide p {
-    margin: 0;
     font-size: 0.9rem;
     color: var(--muted);
 }
@@ -361,15 +362,17 @@ section .tag {
     text-decoration: underline;
     color: var(--muted);
     font-size: 0.7rem;
-    padding: 0.25rem 0.25rem 0.25rem 0;
-    margin-top: 0.5rem;
+    padding: 0.25rem 0 0 0;
 
     &:hover {
         cursor: pointer;
         color: var(--text);
     }
 }
-
+.swiper-slide p,
+.slide-caption a {
+    margin: 0.5rem 0 0 0;
+}
 
 .swiper-pagination-bullet-active {
     background-color: var(--primary) !important;
